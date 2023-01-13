@@ -110,6 +110,10 @@ const typeDefs = `#graphql
     price: Float!,
     onSale: Boolean!
   }
+
+  type Category {
+    name: String!
+  }
   type Query {
     products: [Product!]!
     product(id: ID!): Product
