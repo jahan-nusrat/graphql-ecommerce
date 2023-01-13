@@ -6,7 +6,7 @@ export const Product = {
     return categories.find(category => category.id === categoryId);
   },
 
-  review: (parent, args, context) => {
+  reviews: (parent, args, context) => {
     const { id: productId } = parent;
     return reviews.filter(review => review.productId === productId);
   },

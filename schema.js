@@ -9,7 +9,7 @@ export const typeDefs = `
     onSale: Boolean!
     categoryId: ID!
     category: Category
-    review: [Review!]!
+    reviews: [Review!]!
   }
 
   type Category {
