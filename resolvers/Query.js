@@ -1,4 +1,4 @@
-import { categories, products } from '../data.js';
+import { categories, products, reviews } from '../data.js';
 
 export const Query = {
   products: () => products,
@@ -10,5 +10,10 @@ export const Query = {
   category: (parent, args, context) => {
     const { id: categoryId } = args;
     return categories.find(category => category.id === categoryId);
+  },
+  reviews: () => reviews,
+  review: (parent, args, context) => {
+    const { id } = args;
+    return reviews.find(product => product.id === id);
   },
 };
