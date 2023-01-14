@@ -15,7 +15,7 @@ export const typeDefs = `
   type Category {
     id: ID!
     name: String!
-    products: [Product!]!
+    products(filter: OnSaleProducts): [Product!]!
   }
 
   type Review {
@@ -27,8 +27,12 @@ export const typeDefs = `
     productId: ID!
   }
 
+  input OnSaleProducts {
+    onSale: Boolean
+  }
+
   type Query {
-    products: [Product!]!
+    products(filter: OnSaleProducts): [Product!]!
     product(id: ID!): Product
     categories: [Category!]!
     category(id: ID!): Category
