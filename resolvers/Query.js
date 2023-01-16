@@ -2,12 +2,25 @@ import { categories, products, reviews } from '../data.js';
 
 export const Query = {
   products: (parent, args, context) => {
+    console.log(args);
     const { filter } = args;
-    if (filter && filter.onSale) {
-      return products.filter(product => product.onSale);
-    } else {
-      return products;
+
+    if (filter && (filter.onSale || filter.rating)) {
+      const { onSale, rating } = filter;
+      if (onSale) {
+        return products.filter(product => product.onSale);
+      }
+      if (rating) {
+        return products.filter(product => {
+          return reviews
+            .filter(review => review.productId === product.id)
+            .filter(avg => {
+              return avg.rating > rating;
+            });
+        });
+      }
     }
+    return products;
   },
   product: (parent, args, context) => {
     const { id } = args;

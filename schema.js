@@ -27,8 +27,18 @@ export const typeDefs = `
     productId: ID!
   }
 
+  type Mutation {
+    addCategory(input: inputAddCategory): Category!,
+    updateCategory(id: ID!): Category!
+  }
+
   input OnSaleProducts {
     onSale: Boolean
+    rating: Int
+  }
+
+  input inputAddCategory {
+    name: String!
   }
 
   type Query {
